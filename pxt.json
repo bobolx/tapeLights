@@ -1,0 +1,14 @@
+{
+    "name": "tapeLights",
+    "dependencies": {
+        "core": "*",
+        "neopixel": "github:microsoft/pxt-neopixel#v0.6.9"
+    },
+    "description": "5V WS2812B灯带",
+    "icon": "./lights.png",
+    "license": "MIT",
+    "files": [
+        "main.ts"
+    ],
+    "public": true
+}
