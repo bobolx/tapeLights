@@ -7,10 +7,10 @@ namespace tapeLights {
     let neoStrip = neopixel.create(DigitalPin.P1, maxRGB, NeoPixelMode.RGB);
 
     //% blockId=tape_rgb block="灯%firstRGB| ~ 灯%lastRGB| 亮，颜色为 R值 %red| G值 %green| B值 %blue"
-    //% firstRGB.min=1 firstRGB.max=maxRGB
+    //% firstRGB.min=1 firstRGB.max=24
     //% firstRGB.defl=1
-    //% lastRGB.min=1 lastRGB.max=maxRGB
-    //% lastRGB.defl=maxRGB
+    //% lastRGB.min=1 lastRGB.max=24
+    //% lastRGB.defl=24
     //% red.min=0 red.max=255
     //% green.min=0 green.max=255
     //% blue.min=0 blue.max=255
