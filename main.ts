@@ -3,16 +3,27 @@
 //% weight=99 icon="\uf0e7" color=#1B80C4
 namespace tapeLights {
 
-    let neoStrip = neopixel.create(DigitalPin.P1, 24, NeoPixelMode.RGB);
+    let maxRGB = 24;
+    let neoStrip = neopixel.create(DigitalPin.P1, maxRGB, NeoPixelMode.RGB);
 
-    //% blockId=tape_rgb block="%firstRGB| 到 %lastRGB| 灯亮，颜色为 R值 %red| G值 %green| B值 %blue"
-    //% firstRGB.min=1 firstRGB.max=24
-    //% lastRGB.min=1 lastRGB.max=24
+    //% blockId=tape_rgb block="灯%firstRGB| ~ 灯%lastRGB| 亮，颜色为 R值 %red| G值 %green| B值 %blue"
+    //% firstRGB.min=1 firstRGB.max=maxRGB
+    //% firstRGB.defl=1
+    //% lastRGB.min=1 lastRGB.max=maxRGB
+    //% lastRGB.defl=maxRGB
     //% red.min=0 red.max=255
     //% green.min=0 green.max=255
     //% blue.min=0 blue.max=255
-    //% weight=59
+    //% weight=99
     export function setTapeLights(firstRGB: number, lastRGB:number, red:number, green:number, blue:number): void {
+
+        if(firstRGB < 1 || firstRGB > maxRGB){
+            firstRGB = 1;
+        }
+
+        if(lastRGB < 1 || lastRGB > maxRGB){
+            lastRGB = maxRGB;
+        }
         
         for(let i=firstRGB-1;i<lastRGB;i++){
             neoStrip.setPixelColor(i, neopixel.rgb(red, green, blue));
@@ -26,7 +37,7 @@ namespace tapeLights {
    /**
      * 关闭所有灯
      */
-   //% blockId="cruise_neo_clear" block="关闭所有LED灯"
+   //% blockId="cruise_neo_clear" block="关闭所有灯"
    //% weight=55
    export function neoClear(): void {
        neoStrip.showColor(neopixel.colors(NeoPixelColors.Black));
