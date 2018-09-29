@@ -4,7 +4,7 @@
 namespace tapeLights {
 
     let maxRGB = 60;
-    var neoStrip = neopixel.create(DigitalPin.P1, maxRGB, NeoPixelMode.RGB);
+    //var neoStrip = neopixel.create(DigitalPin.P1, maxRGB, NeoPixelMode.RGB);
     //% blockId=tape_rgb block="连接引脚 %pin| 灯%firstRGB| ~ 灯%lastRGB| 亮，颜色为 R值 %red| G值 %green| B值 %blue"
     //% firstRGB.min=1 firstRGB.max=60
     //% firstRGB.defl=1
@@ -15,7 +15,7 @@ namespace tapeLights {
     //% blue.min=0 blue.max=255
     //% weight=99
     export function setTapeLights(pin: DigitalPin, firstRGB: number, lastRGB:number, red:number, green:number, blue:number): void {
-        neoStrip = neopixel.create(pin, maxRGB, NeoPixelMode.RGB);
+        let neoStrip = neopixel.create(pin, maxRGB, NeoPixelMode.RGB);
 
         if(firstRGB < 1 || firstRGB > maxRGB){
             firstRGB = 1;
@@ -33,13 +33,13 @@ namespace tapeLights {
         
     }
 
-   /**
-     * 关闭所有灯
-     */
-   //% blockId="tape_neo_clear" block="关闭所有灯"
-   //% weight=98
-   export function neoClear(): void {
-       neoStrip.showColor(neopixel.colors(NeoPixelColors.Black));
-   }
+//    /**
+//      * 关闭所有灯
+//      */
+//    //% blockId="tape_neo_clear" block="关闭所有灯"
+//    //% weight=98
+//    export function neoClear(): void {
+//        neoStrip.showColor(neopixel.colors(NeoPixelColors.Black));
+//    }
 
 }
