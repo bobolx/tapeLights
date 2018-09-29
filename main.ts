@@ -29,17 +29,10 @@ namespace tapeLights {
         if(lastRGB < 1 || lastRGB > maxRGB){
             lastRGB = maxRGB;
         }
-
-        if(switchTag == switchList.off){
-            for(let i=firstRGB-1;i<lastRGB;i++){
-                neoStrip.setPixelColor(i, neopixel.rgb(0, 0, 0));
-            }
-        }else{
-            for(let i=firstRGB-1;i<lastRGB;i++){
-                neoStrip.setPixelColor(i, neopixel.rgb(red, green, blue));
-            }
-        }
         
+        for(let i=firstRGB-1;i<lastRGB;i++){
+            neoStrip.setPixelColor(i, neopixel.rgb(red, green, blue));
+        }
         
         neoStrip.show();
         
