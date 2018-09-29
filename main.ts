@@ -4,7 +4,7 @@
 namespace tapeLights {
 
     let maxRGB = 60;
-    var neoStrip = null;
+    var neoStrip = neopixel.create(DigitalPin.P1, maxRGB, NeoPixelMode.RGB);
     //% blockId=tape_rgb block="连接引脚 %pin| 灯%firstRGB| ~ 灯%lastRGB| 亮，颜色为 R值 %red| G值 %green| B值 %blue"
     //% firstRGB.min=1 firstRGB.max=60
     //% firstRGB.defl=1
