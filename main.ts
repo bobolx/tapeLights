@@ -10,7 +10,7 @@ namespace tapeLights {
 
     let maxRGB = 60;
 
-    //% blockId=tape_rgb block="连接引脚 %pin| 灯%firstRGB| ~ 灯%lastRGB| %switchTag，颜色为 R值 %red| G值 %green| B值 %blue"
+    //% blockId=tape_rgb block="连接引脚 %pin| 灯%firstRGB| ~ 灯%lastRGB| %switchTag|，颜色为 R值 %red| G值 %green| B值 %blue"
     //% firstRGB.min=1 firstRGB.max=60
     //% firstRGB.defl=1
     //% lastRGB.min=1 lastRGB.max=60
@@ -29,7 +29,7 @@ namespace tapeLights {
         if(lastRGB < 1 || lastRGB > maxRGB){
             lastRGB = maxRGB;
         }
-        
+
         if(switchTag == switchList.off){
             for(let i=firstRGB-1;i<lastRGB;i++){
                 neoStrip.setPixelColor(i, neopixel.rgb(0, 0, 0));
