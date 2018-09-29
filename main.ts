@@ -8,14 +8,14 @@ enum switchList {
 //% weight=99 icon="\uf0e7" color=#1B80C4
 namespace tapeLights {
 
-    let maxRGB = 60;
+    let maxRGB = 30;
     let neoStrip: neopixel.Strip;
 
     //% blockId=tape_rgb block="连接引脚 %pin| 灯%firstRGB| ~ 灯%lastRGB| ，颜色为 R值 %red| G值 %green| B值 %blue"
-    //% firstRGB.min=1 firstRGB.max=60
+    //% firstRGB.min=1 firstRGB.max=30
     //% firstRGB.defl=1
-    //% lastRGB.min=1 lastRGB.max=60
-    //% lastRGB.defl=60
+    //% lastRGB.min=1 lastRGB.max=30
+    //% lastRGB.defl=30
     //% red.min=0 red.max=255
     //% green.min=0 green.max=255
     //% blue.min=0 blue.max=255
