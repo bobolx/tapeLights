@@ -1,12 +1,16 @@
-
+enum switchList {
+    //% block="亮"
+    on = 1,
+    //% block="灭"
+    off = 2
+}
 
 //% weight=99 icon="\uf0e7" color=#1B80C4
 namespace tapeLights {
 
     let maxRGB = 60;
 
-    var neoStrip;
-    //% blockId=tape_rgb block="连接引脚 %pin| 灯%firstRGB| ~ 灯%lastRGB| 亮，颜色为 R值 %red| G值 %green| B值 %blue"
+    //% blockId=tape_rgb block="连接引脚 %pin| 灯%firstRGB| ~ 灯%lastRGB| %switchTag，颜色为 R值 %red| G值 %green| B值 %blue"
     //% firstRGB.min=1 firstRGB.max=60
     //% firstRGB.defl=1
     //% lastRGB.min=1 lastRGB.max=60
@@ -15,8 +19,8 @@ namespace tapeLights {
     //% green.min=0 green.max=255
     //% blue.min=0 blue.max=255
     //% weight=99
-    export function setTapeLights(pin: DigitalPin, firstRGB: number, lastRGB:number, red:number, green:number, blue:number): void {
-        neoStrip = neopixel.create(pin, maxRGB, NeoPixelMode.RGB);
+    export function setTapeLights(pin: DigitalPin, switchTag: switchList, firstRGB: number, lastRGB:number, red:number, green:number, blue:number): void {
+        let neoStrip = neopixel.create(pin, maxRGB, NeoPixelMode.RGB);
 
         if(firstRGB < 1 || firstRGB > maxRGB){
             firstRGB = 1;
@@ -26,21 +30,28 @@ namespace tapeLights {
             lastRGB = maxRGB;
         }
         
-        for(let i=firstRGB-1;i<lastRGB;i++){
-            neoStrip.setPixelColor(i, neopixel.rgb(red, green, blue));
+        if(switchTag == switchList.off){
+            for(let i=firstRGB-1;i<lastRGB;i++){
+                neoStrip.setPixelColor(i, neopixel.rgb(0, 0, 0));
+            }
+        }else{
+            for(let i=firstRGB-1;i<lastRGB;i++){
+                neoStrip.setPixelColor(i, neopixel.rgb(red, green, blue));
+            }
         }
+        
         
         neoStrip.show();
         
     }
 
-   /**
-     * 关闭所有灯
-     */
-   //% blockId="tape_neo_clear" block="关闭所有灯"
-   //% weight=98
-   export function neoClear(): void {
-       neoStrip.showColor(neopixel.colors(NeoPixelColors.Black));
-   }
+//    /**
+//      * 关闭所有灯
+//      */
+//    //% blockId="tape_neo_clear" block="关闭所有灯"
+//    //% weight=98
+//    export function neoClear(): void {
+//        neoStrip.showColor(neopixel.colors(NeoPixelColors.Black));
+//    }
 
 }
