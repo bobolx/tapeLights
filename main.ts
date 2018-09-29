@@ -41,13 +41,13 @@ namespace tapeLights {
         
     }
 
-//    /**
-//      * 关闭所有灯
-//      */
-//    //% blockId="tape_neo_clear" block="关闭所有灯"
-//    //% weight=98
-//    export function neoClear(): void {
-//        neoStrip.showColor(neopixel.colors(NeoPixelColors.Black));
-//    }
+   /**
+     * 关闭所有灯
+     */
+   //% blockId="tape_neo_clear" block="关闭所有灯"
+   //% weight=98
+   export function neoClear(): void {
+       neoStrip.showColor(neopixel.colors(NeoPixelColors.Black));
+   }
 
 }
